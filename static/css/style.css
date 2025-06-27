@@ -8,20 +8,21 @@
 }
 
 :root {
-    /* Couleurs inspirées BlaBlaCar + thème écologique */
-    --primary-blue: #00AFF5;
-    --secondary-blue: #0084C7;
-    --eco-green: #4CAF50;
-    --eco-light-green: #81C784;
-    --eco-dark-green: #2E7D32;
+    /* Nouvelle charte couleur écologique */
+    --primary-blue: #23aac4;
+    --secondary-blue: #1e8fa3;
+    --eco-green: #53975f;
+    --eco-light-green: #a9d9bc;
+    --eco-dark-green: #3d6b46;
+    --warm-cream: #f6e7cb;
     --warning-orange: #FF9800;
     --error-red: #F44336;
     --text-dark: #2C3E50;
     --text-light: #7F8C8D;
-    --bg-light: #F8F9FA;
+    --bg-light: #f6e7cb;
     --bg-white: #FFFFFF;
-    --shadow: 0 4px 20px rgba(0, 175, 245, 0.1);
-    --shadow-strong: 0 8px 30px rgba(0, 175, 245, 0.15);
+    --shadow: 0 4px 20px rgba(35, 170, 196, 0.1);
+    --shadow-strong: 0 8px 30px rgba(35, 170, 196, 0.15);
     
     /* Typographie */
     --font-main: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -71,11 +72,26 @@ body {
 .logo {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--primary-blue);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.logo-blabla {
+    color: var(--primary-blue);
+}
+
+.logo-green {
+    background: var(--eco-green);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 25px;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(83, 151, 95, 0.3);
 }
 
 .logo::before {
@@ -299,7 +315,7 @@ body {
 
 /* ===== CALCULATEUR ===== */
 .calculator {
-    background: var(--bg-white);
+    background: var(--warm-cream);
 }
 
 .calculator-form {
@@ -404,7 +420,7 @@ body {
 .stat {
     text-align: center;
     padding: 1rem;
-    background: var(--bg-light);
+    background: var(--warm-cream);
     border-radius: 10px;
 }
 
@@ -451,7 +467,7 @@ body {
 }
 
 .recommendation {
-    background: var(--bg-light);
+    background: var(--warm-cream);
     padding: 1rem;
     border-radius: 8px;
     margin: 1rem 0;
@@ -460,7 +476,7 @@ body {
 
 /* ===== QUIZ ===== */
 .quiz-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--eco-green) 0%, var(--eco-light-green) 100%);
     color: white;
 }
 
@@ -518,11 +534,11 @@ body {
 
 /* ===== TEMOIGNAGES ===== */
 .testimonials-section {
-    background: var(--bg-white);
+    background: var(--warm-cream);
 }
 
 .testimonial-card {
-    background: var(--bg-light);
+    background: var(--eco-light-green);
     padding: 2rem;
     border-radius: 15px;
     margin: 1rem 0;
@@ -794,7 +810,7 @@ body {
 
 /* ===== SECTION IA - FOND ET STRUCTURE ===== */
 .ia-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--eco-green) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -869,11 +885,11 @@ body {
 }
 
 .ia-card-params {
-    border-left: 5px solid var(--warning-orange);
+    border-left: 5px solid var(--primary-blue);
 }
 
 .ia-card-impact {
-    border-left: 5px solid var(--error-red);
+    border-left: 5px solid var(--eco-green);
 }
 
 .ia-card-title {
@@ -964,7 +980,7 @@ body {
 
 /* Équivalences */
 .ia-equivalences {
-    background: linear-gradient(135deg, var(--warning-orange), #F57C00);
+    background: linear-gradient(135deg, var(--eco-green), var(--eco-dark-green));
     color: white;
     padding: 2rem;
     border-radius: 15px;
