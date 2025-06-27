@@ -123,9 +123,9 @@ def calculate_impact():
             {{ result.recommendation }}
         </div>
         
-        <button class="btn btn-primary" hx-get="/share-trip" hx-target="#share-section">
-            🚗 Trouver un covoiturage
-        </button>
+        <a href="https://www.blablacar.fr/" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration: none; display: inline-block;">
+            🚗 Trouver un covoiturage sur BlaBlaCar
+        </a>
     </div>
     """, result=result)
 
@@ -231,56 +231,6 @@ def get_eco_fact():
         <p>{{ fact }}</p>
     </div>
     """, fact=fact)
-
-@app.route('/share-trip')
-def share_trip():
-    """Simuler la recherche de covoiturage"""
-    return render_template_string("""
-    <div class="share-trip-section fade-in">
-        <h3>🚗 Trouvez votre covoiturage</h3>
-        <form class="trip-form" hx-post="/find-rides" hx-target="#ride-results">
-            <div class="form-row">
-                <input type="text" placeholder="Départ" name="from" class="form-input" required>
-                <input type="text" placeholder="Destination" name="to" class="form-input" required>
-            </div>
-            <div class="form-row">
-                <input type="date" name="date" class="form-input" required>
-                <input type="time" name="time" class="form-input" required>
-            </div>
-            <button type="submit" class="btn btn-primary">🔍 Rechercher</button>
-        </form>
-        <div id="ride-results"></div>
-    </div>
-    """)
-
-@app.route('/find-rides', methods=['POST'])
-def find_rides():
-    """Simuler des résultats de covoiturage"""
-    mock_rides = [
-        {"driver": "Sophie", "time": "08:30", "price": "8€", "seats": 2, "rating": "4.9★"},
-        {"driver": "Antoine", "time": "09:15", "price": "6€", "seats": 1, "rating": "4.7★"},
-        {"driver": "Clara", "time": "08:45", "price": "7€", "seats": 3, "rating": "5.0★"}
-    ]
-    
-    return render_template_string("""
-    <div class="ride-results fade-in">
-        <h4>🎯 Trajets trouvés</h4>
-        {% for ride in rides %}
-        <div class="ride-card">
-            <div class="ride-info">
-                <div class="driver-name">👤 {{ ride.driver }}</div>
-                <div class="ride-details">
-                    🕐 {{ ride.time }} • 💰 {{ ride.price }} • 🪑 {{ ride.seats }} places • {{ ride.rating }}
-                </div>
-            </div>
-            <button class="btn btn-secondary btn-small">Réserver</button>
-        </div>
-        {% endfor %}
-        <div class="eco-impact">
-            💡 En choisissant le covoiturage, vous éviterez ~15kg de CO2 pour ce trajet !
-        </div>
-    </div>
-    """, rides=mock_rides)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

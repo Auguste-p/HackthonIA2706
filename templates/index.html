@@ -26,12 +26,21 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="logo">BlaBlaGreen</a>
-            <ul class="nav-links">
-                <li><a href="#hero">Accueil</a></li>
-                <li><a href="#calculator">Calculateur</a></li>
-                <li><a href="#quiz">Quiz</a></li>
-                <li><a href="#testimonials">Témoignages</a></li>
-                <li><a href="#action">Agir</a></li>
+            
+            <!-- Bouton menu burger -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            
+            <!-- Menu navigation -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero" class="nav-link">Accueil</a></li>
+                <li><a href="#calculator" class="nav-link">Calculateur</a></li>
+                <li><a href="#quiz" class="nav-link">Quiz</a></li>
+                <li><a href="#testimonials" class="nav-link">Témoignages</a></li>
+                <li><a href="#action" class="nav-link">Agir</a></li>
             </ul>
         </div>
     </nav>
@@ -192,120 +201,120 @@
     </section>
 
     <!-- Section Impact IA -->
-    <section id="ia-impact" class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden;">
+    <section id="ia-impact" class="section ia-section">
         <!-- Fond décoratif avec particules -->
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;2&quot; fill=&quot;white&quot;/><circle cx=&quot;90&quot; cy=&quot;20&quot; r=&quot;1.5&quot; fill=&quot;white&quot;/><circle cx=&quot;20&quot; cy=&quot;80&quot; r=&quot;1&quot; fill=&quot;white&quot;/><circle cx=&quot;80&quot; cy=&quot;90&quot; r=&quot;2.5&quot; fill=&quot;white&quot;/><circle cx=&quot;50&quot; cy=&quot;30&quot; r=&quot;1.5&quot; fill=&quot;white&quot;/><circle cx=&quot;30&quot; cy=&quot;50&quot; r=&quot;1&quot; fill=&quot;white&quot;/><circle cx=&quot;70&quot; cy=&quot;60&quot; r=&quot;2&quot; fill=&quot;white&quot;/></svg>'); background-size: 200px 200px;"></div>
+        <div class="ia-background-particles"></div>
         
-        <div class="container" style="position: relative; z-index: 1;">
+        <div class="container ia-container">
             <div class="section-title">
-                <h2 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">🤖 Impact de l'IA sur ce Projet</h2>
-                <p style="color: rgba(255,255,255,0.9);">Découvrez l'empreinte carbone de l'utilisation de l'intelligence artificielle dans votre apprentissage</p>
+                <h2 class="ia-section-title">🤖 Impact de l'IA sur ce Projet</h2>
+                <p class="ia-section-subtitle">Découvrez l'empreinte carbone de l'utilisation de l'intelligence artificielle dans votre apprentissage</p>
             </div>
             
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                <h3 style="color: var(--text-dark); margin-bottom: 2rem; text-align: center; font-size: 1.5rem;">
-                    📊 Calcul d'Impact : 200 Étudiants × 4h d'IA = <span style="color: var(--error-red); font-weight: bold;">48 kg CO₂</span>
+            <div class="ia-content-wrapper">
+                <h3 class="ia-main-title">
+                    📊 Calcul d'Impact : 200 Étudiants × 4h d'IA = <span class="ia-co2-highlight">48 kg CO₂</span>
                 </h3>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
-                    <div style="background: white; padding: 2rem; border-radius: 15px; border-left: 5px solid var(--warning-orange); box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="font-size: 1.5rem;">⚙️</span>
+                <div class="ia-cards-grid">
+                    <div class="ia-card ia-card-params">
+                        <h4 class="ia-card-title">
+                            <span class="ia-card-icon">⚙️</span>
                             Paramètres du Calcul
                         </h4>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem;">
-                            <div style="text-align: center;">
-                                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">200</div>
-                                <div style="color: var(--text-light); font-size: 0.9rem;">Étudiants</div>
+                        <div class="ia-stats-grid">
+                            <div class="ia-stat">
+                                <div class="ia-stat-value">200</div>
+                                <div class="ia-stat-label">Étudiants</div>
                             </div>
-                            <div style="text-align: center;">
-                                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">4h</div>
-                                <div style="color: var(--text-light); font-size: 0.9rem;">Utilisation</div>
+                            <div class="ia-stat">
+                                <div class="ia-stat-value">4h</div>
+                                <div class="ia-stat-label">Utilisation</div>
                             </div>
-                            <div style="text-align: center;">
-                                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">240</div>
-                                <div style="color: var(--text-light); font-size: 0.9rem;">Requêtes/étudiant</div>
+                            <div class="ia-stat">
+                                <div class="ia-stat-value">240</div>
+                                <div class="ia-stat-label">Requêtes/étudiant</div>
                             </div>
                         </div>
-                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem; text-align: center;">
+                        <p class="ia-card-note">
                             1 requête IA par minute en moyenne (chatbot, assistance, etc.)
                         </p>
                     </div>
                     
-                    <div style="background: white; padding: 2rem; border-radius: 15px; border-left: 5px solid var(--error-red); box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="font-size: 1.5rem;">🌍</span>
+                    <div class="ia-card ia-card-impact">
+                        <h4 class="ia-card-title">
+                            <span class="ia-card-icon">🌍</span>
                             Impact Carbone Total
                         </h4>
-                        <div style="text-align: center; margin-bottom: 1rem;">
-                            <div style="font-size: 3rem; font-weight: bold; color: var(--error-red);">48 kg</div>
-                            <div style="color: var(--text-light); font-size: 1.1rem;">CO₂ émis</div>
+                        <div class="ia-main-impact">
+                            <div class="ia-co2-value">48 kg</div>
+                            <div class="ia-co2-label">CO₂ émis</div>
                         </div>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem;">
-                            <div style="text-align: center;">
-                                <div style="font-weight: bold; color: var(--text-dark);">48 000</div>
-                                <div style="color: var(--text-light); font-size: 0.9rem;">Requêtes totales</div>
+                        <div class="ia-details-grid">
+                            <div class="ia-detail">
+                                <div class="ia-detail-value">48 000</div>
+                                <div class="ia-detail-label">Requêtes totales</div>
                             </div>
-                            <div style="text-align: center;">
-                                <div style="font-weight: bold; color: var(--text-dark);">1g</div>
-                                <div style="color: var(--text-light); font-size: 0.9rem;">CO₂/requête</div>
+                            <div class="ia-detail">
+                                <div class="ia-detail-value">1g</div>
+                                <div class="ia-detail-label">CO₂/requête</div>
                             </div>
                         </div>
-                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem; text-align: center;">
+                        <p class="ia-card-note">
                             Basé sur les études OpenAI, Google, HuggingFace
                         </p>
                     </div>
                 </div>
                 
                 <!-- Équivalences -->
-                <div style="background: linear-gradient(135deg, var(--warning-orange), #F57C00); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-                    <h4 style="margin-bottom: 1.5rem; text-align: center;">📏 Équivalences de 48 kg CO₂</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚗</div>
-                            <div style="font-size: 1.5rem; font-weight: bold;">400 km</div>
-                            <div style="opacity: 0.9; font-size: 0.9rem;">En voiture thermique</div>
+                <div class="ia-equivalences">
+                    <h4 class="ia-equiv-title">📏 Équivalences de 48 kg CO₂</h4>
+                    <div class="ia-equiv-grid">
+                        <div class="ia-equiv-item">
+                            <div class="ia-equiv-icon">🚗</div>
+                            <div class="ia-equiv-value">400 km</div>
+                            <div class="ia-equiv-desc">En voiture thermique</div>
                         </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
-                            <div style="font-size: 1.5rem; font-weight: bold;">5 000</div>
-                            <div style="opacity: 0.9; font-size: 0.9rem;">Emails envoyés</div>
+                        <div class="ia-equiv-item">
+                            <div class="ia-equiv-icon">📧</div>
+                            <div class="ia-equiv-value">5 000</div>
+                            <div class="ia-equiv-desc">Emails envoyés</div>
                         </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌳</div>
-                            <div style="font-size: 1.5rem; font-weight: bold;">~2</div>
-                            <div style="opacity: 0.9; font-size: 0.9rem;">Arbres à planter</div>
+                        <div class="ia-equiv-item">
+                            <div class="ia-equiv-icon">🌳</div>
+                            <div class="ia-equiv-value">~2</div>
+                            <div class="ia-equiv-desc">Arbres à planter</div>
                         </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💡</div>
-                            <div style="font-size: 1.5rem; font-weight: bold;">200h</div>
-                            <div style="opacity: 0.9; font-size: 0.9rem;">D'ampoule LED</div>
+                        <div class="ia-equiv-item">
+                            <div class="ia-equiv-icon">💡</div>
+                            <div class="ia-equiv-value">200h</div>
+                            <div class="ia-equiv-desc">D'ampoule LED</div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Messages de sensibilisation -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
-                    <div style="background: var(--primary-blue); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                            <span style="font-size: 1.5rem;">💡</span>
+                <div class="ia-insights-grid">
+                    <div class="ia-insight ia-insight-positive">
+                        <div class="ia-insight-header">
+                            <span class="ia-insight-icon">💡</span>
                             <strong>L'IA, un outil à double tranchant</strong>
                         </div>
-                        <p style="margin: 0; opacity: 0.9;">L'IA consomme de l'énergie, mais elle peut aussi aider à optimiser nos déplacements !</p>
+                        <p>L'IA consomme de l'énergie, mais elle peut aussi aider à optimiser nos déplacements !</p>
                     </div>
-                    <div style="background: var(--eco-green); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                            <span style="font-size: 1.5rem;">🌱</span>
+                    <div class="ia-insight ia-insight-balance">
+                        <div class="ia-insight-header">
+                            <span class="ia-insight-icon">🌱</span>
                             <strong>Compensation positive</strong>
                         </div>
-                        <p style="margin: 0; opacity: 0.9;">Utiliser l'IA pour calculer son impact carbone transport peut compenser sa propre empreinte</p>
+                        <p>Utiliser l'IA pour calculer son impact carbone transport peut compenser sa propre empreinte</p>
                     </div>
-                    <div style="background: var(--secondary-blue); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                            <span style="font-size: 1.5rem;">⚖️</span>
+                    <div class="ia-insight ia-insight-ratio">
+                        <div class="ia-insight-header">
+                            <span class="ia-insight-icon">⚖️</span>
                             <strong>Perspective d'équilibre</strong>
                         </div>
-                        <p style="margin: 0; opacity: 0.9;">48 kg CO₂ d'IA vs 1170 kg CO₂ économisés par le covoiturage : un rapport de 1 à 24 !</p>
+                        <p>48 kg CO₂ d'IA vs 1170 kg CO₂ économisés par le covoiturage : un rapport de 1 à 24 !</p>
                     </div>
                 </div>
             </div>
@@ -403,6 +412,31 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navbar = document.getElementById('navbar');
             const usageCounter = document.getElementById('usage-counter');
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const navLinkItems = document.querySelectorAll('.nav-link');
+            
+            // Menu burger toggle
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Fermer le menu quand on clique sur un lien
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+            
+            // Fermer le menu quand on clique en dehors
+            document.addEventListener('click', function(event) {
+                if (!navbar.contains(event.target)) {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
             
             // Navbar scrolled effect
             window.addEventListener('scroll', function() {

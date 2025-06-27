@@ -86,7 +86,23 @@ Un site one-page moderne utilisant HTMX pour créer une expérience interactive 
 - **Frontend :** HTML5, CSS3, JavaScript
 - **Interactivité :** HTMX pour les mises à jour dynamiques
 - **Design :** CSS custom inspiré de BlaBlaCar
-- **Responsivité :** Mobile-first design
+- **Responsivité :** Mobile-first design avec breakpoints optimisés
+
+## Dernières améliorations ✨
+
+### 📱 Correction Responsivité Section IA (27/06/2025)
+- ✅ **Suppression des styles inline** : Tous les styles sont maintenant gérés en CSS
+- ✅ **Breakpoints optimisés** : Desktop (>1200px), Tablette (768-1200px), Mobile (480-768px), Petit mobile (<480px)
+- ✅ **Grilles adaptatives** : Auto-adaptation selon la largeur d'écran
+- ✅ **Tailles responsives** : Textes, icônes et espacements proportionnels
+- ✅ **Navigation burger** : Menu mobile responsive
+- ✅ **Performance CSS** : Classes réutilisables et maintenables
+
+### 🧮 Calculateur Carbone Précis
+- ✅ **Algorithme ADEME** : Valeurs officielles d'émissions CO2
+- ✅ **Conversion g→kg** : Affichage correct des résultats
+- ✅ **Recommandations réalistes** : Seuils et messages adaptés
+- ✅ **Redirect BlaBlaCar** : Bouton fonctionnel vers la plateforme
 
 ## Fonctionnalités HTMX
 
