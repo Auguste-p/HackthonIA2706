@@ -94,16 +94,6 @@ body {
     box-shadow: 0 2px 8px rgba(83, 151, 95, 0.3);
 }
 
-.logo::before {
-    content: "";
-    display: inline-block;
-    width: 2.2rem;
-    height: 2.2rem;
-    background: url('/static/images/blablacar_logo.png') no-repeat center/contain;
-    vertical-align: middle;
-    font-size: 2rem;
-}
-
 .nav-links {
     display: flex;
     gap: 2rem;
