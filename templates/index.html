@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlaBlaGreen - IA</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="Découvrez l'impact de vos transports sur l'environnement et adoptez le covoiturage pour un futur plus vert">
+    <meta name="keywords" content="covoiturage, écologie, transport, environnement, CO2, économies">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+</head>
+<body>
+    <!-- Navigation fixe -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">BlaBlaGreen</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#calculator">Calculateur</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#testimonials">Témoignages</a></li>
+                <li><a href="#action">Agir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section id="hero" class="section hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Voyagez Responsable</h1>
+                <p class="subtitle">Découvrez l'impact de vos transports et adoptez le covoiturage pour préserver notre planète</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">75%</span>
+                        <span class="stat-label">Réduction CO2 possible</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2000€</span>
+                        <span class="stat-label">Économies annuelles</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3M</span>
+                        <span class="stat-label">Covoitureurs en France</span>
+                    </div>
+                </div>
+                
+                <a href="#calculator" class="cta-button">
+                    🧮 Calculer mon impact
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Calculateur -->
+    <section id="calculator" class="section calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>🧮 Calculateur d'Impact Carbone</h2>
+                <p>Découvrez l'empreinte environnementale de vos déplacements et les économies possibles</p>
+            </div>
+            
+            <div class="calculator-form">
+                <form hx-post="/calculate-impact" 
+                      hx-target="#impact-results" 
+                      hx-swap="innerHTML">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="distance" class="form-label">Distance du trajet (km)</label>
+                            <input type="number" 
+                                   id="distance" 
+                                   name="distance" 
+                                   class="form-input" 
+                                   placeholder="25" 
+                                   min="1" 
+                                   max="1000" 
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="transport" class="form-label">Moyen de transport</label>
+                            <select id="transport" name="transport" class="form-select" required>
+                                <option value="voiture_seul">🚗 Voiture seul</option>
+                                <option value="covoiturage">🚙 Covoiturage</option>
+                                <option value="train">🚆 Train</option>
+                                <option value="bus">🚌 Bus</option>
+                                <option value="velo">🚴 Vélo</option>
+                                <option value="marche">🚶 Marche</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="frequency" class="form-label">Fréquence par semaine</label>
+                            <select id="frequency" name="frequency" class="form-select" required>
+                                <option value="1">1 fois</option>
+                                <option value="2">2 fois</option>
+                                <option value="3">3 fois</option>
+                                <option value="5" selected>5 fois (travail)</option>
+                                <option value="10">10 fois (aller-retour travail)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: end;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Calculer l'impact
+                                <span class="htmx-indicator loading-spinner"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="impact-results">
+                <!-- Les résultats apparaîtront ici -->
+            </div>
+            
+            <div id="share-section">
+                <!-- Section covoiturage apparaîtra ici -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Quiz -->
+    <section id="quiz" class="section quiz-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">🧠 Quiz Écologique</h2>
+                <p style="color: rgba(255,255,255,0.9);">Testez vos connaissances sur l'impact environnemental des transports</p>
+            </div>
+            
+            <div class="quiz-container">
+                <div id="quiz-container" 
+                     hx-get="/quiz-question" 
+                     hx-trigger="load">
+                    <!-- Question de quiz chargée dynamiquement -->
+                    <div class="htmx-indicator" style="text-align: center; padding: 2rem; color: white;">
+                        Chargement de la question...
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" 
+                            hx-get="/eco-fact" 
+                            hx-target="#eco-fact-display"
+                            hx-swap="innerHTML">
+                        💡 Fait écologique du jour
+                    </button>
+                </div>
+                
+                <div id="eco-fact-display">
+                    <!-- Fait écologique apparaîtra ici -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section id="testimonials" class="section testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>🚗 Ils ont adopté le covoiturage</h2>
+                <p>Découvrez comment d'autres jeunes ont réduit leur impact environnemental</p>
+            </div>
+            
+            <div id="testimonial-display" 
+                 hx-get="/testimonial" 
+                 hx-trigger="load">
+                <!-- Témoignage chargé dynamiquement -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-primary" 
+                        hx-get="/testimonial" 
+                        hx-target="#testimonial-display"
+                        hx-swap="innerHTML">
+                    📖 Autre témoignage
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Impact IA -->
+    <section id="ia-impact" class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden;">
+        <!-- Fond décoratif avec particules -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;2&quot; fill=&quot;white&quot;/><circle cx=&quot;90&quot; cy=&quot;20&quot; r=&quot;1.5&quot; fill=&quot;white&quot;/><circle cx=&quot;20&quot; cy=&quot;80&quot; r=&quot;1&quot; fill=&quot;white&quot;/><circle cx=&quot;80&quot; cy=&quot;90&quot; r=&quot;2.5&quot; fill=&quot;white&quot;/><circle cx=&quot;50&quot; cy=&quot;30&quot; r=&quot;1.5&quot; fill=&quot;white&quot;/><circle cx=&quot;30&quot; cy=&quot;50&quot; r=&quot;1&quot; fill=&quot;white&quot;/><circle cx=&quot;70&quot; cy=&quot;60&quot; r=&quot;2&quot; fill=&quot;white&quot;/></svg>'); background-size: 200px 200px;"></div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-title">
+                <h2 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">🤖 Impact de l'IA sur ce Projet</h2>
+                <p style="color: rgba(255,255,255,0.9);">Découvrez l'empreinte carbone de l'utilisation de l'intelligence artificielle dans votre apprentissage</p>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <h3 style="color: var(--text-dark); margin-bottom: 2rem; text-align: center; font-size: 1.5rem;">
+                    📊 Calcul d'Impact : 200 Étudiants × 4h d'IA = <span style="color: var(--error-red); font-weight: bold;">48 kg CO₂</span>
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 15px; border-left: 5px solid var(--warning-orange); box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.5rem;">⚙️</span>
+                            Paramètres du Calcul
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">200</div>
+                                <div style="color: var(--text-light); font-size: 0.9rem;">Étudiants</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">4h</div>
+                                <div style="color: var(--text-light); font-size: 0.9rem;">Utilisation</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">240</div>
+                                <div style="color: var(--text-light); font-size: 0.9rem;">Requêtes/étudiant</div>
+                            </div>
+                        </div>
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem; text-align: center;">
+                            1 requête IA par minute en moyenne (chatbot, assistance, etc.)
+                        </p>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; border-left: 5px solid var(--error-red); box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.5rem;">🌍</span>
+                            Impact Carbone Total
+                        </h4>
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 3rem; font-weight: bold; color: var(--error-red);">48 kg</div>
+                            <div style="color: var(--text-light); font-size: 1.1rem;">CO₂ émis</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem;">
+                            <div style="text-align: center;">
+                                <div style="font-weight: bold; color: var(--text-dark);">48 000</div>
+                                <div style="color: var(--text-light); font-size: 0.9rem;">Requêtes totales</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-weight: bold; color: var(--text-dark);">1g</div>
+                                <div style="color: var(--text-light); font-size: 0.9rem;">CO₂/requête</div>
+                            </div>
+                        </div>
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem; text-align: center;">
+                            Basé sur les études OpenAI, Google, HuggingFace
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Équivalences -->
+                <div style="background: linear-gradient(135deg, var(--warning-orange), #F57C00); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                    <h4 style="margin-bottom: 1.5rem; text-align: center;">📏 Équivalences de 48 kg CO₂</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚗</div>
+                            <div style="font-size: 1.5rem; font-weight: bold;">400 km</div>
+                            <div style="opacity: 0.9; font-size: 0.9rem;">En voiture thermique</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
+                            <div style="font-size: 1.5rem; font-weight: bold;">5 000</div>
+                            <div style="opacity: 0.9; font-size: 0.9rem;">Emails envoyés</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌳</div>
+                            <div style="font-size: 1.5rem; font-weight: bold;">~2</div>
+                            <div style="opacity: 0.9; font-size: 0.9rem;">Arbres à planter</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💡</div>
+                            <div style="font-size: 1.5rem; font-weight: bold;">200h</div>
+                            <div style="opacity: 0.9; font-size: 0.9rem;">D'ampoule LED</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Messages de sensibilisation -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--primary-blue); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-size: 1.5rem;">💡</span>
+                            <strong>L'IA, un outil à double tranchant</strong>
+                        </div>
+                        <p style="margin: 0; opacity: 0.9;">L'IA consomme de l'énergie, mais elle peut aussi aider à optimiser nos déplacements !</p>
+                    </div>
+                    <div style="background: var(--eco-green); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-size: 1.5rem;">🌱</span>
+                            <strong>Compensation positive</strong>
+                        </div>
+                        <p style="margin: 0; opacity: 0.9;">Utiliser l'IA pour calculer son impact carbone transport peut compenser sa propre empreinte</p>
+                    </div>
+                    <div style="background: var(--secondary-blue); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-size: 1.5rem;">⚖️</span>
+                            <strong>Perspective d'équilibre</strong>
+                        </div>
+                        <p style="margin: 0; opacity: 0.9;">48 kg CO₂ d'IA vs 1170 kg CO₂ économisés par le covoiturage : un rapport de 1 à 24 !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Call to Action -->
+    <section id="action" class="section hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">🚀 Prêt à faire la différence ?</h2>
+                <p class="subtitle">Rejoignez la communauté des éco-voyageurs et réduisez votre empreinte carbone dès aujourd'hui</p>
+                
+                <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="#calculator" class="cta-button">
+                        🧮 Recalculer mon impact
+                    </a>
+                    <a class="cta-button" 
+                        href="https://www.blablacar.fr/" 
+                        target="_blank" 
+                        rel="noopener" 
+                        style="background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); text-decoration: none;">
+                         🚗 Trouver un covoiturage
+                    </a>
+                </div>
+                
+                <div id="main-share-section" style="margin-top: 2rem;">
+                    <!-- Section principale de covoiturage -->
+                </div>
+                
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.1); border-radius: 15px;">
+                    <h3 style="color: white; margin-bottom: 1rem;">🌍 Ensemble, faisons la différence</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: white;">-30%</div>
+                            <div style="color: rgba(255,255,255,0.9);">Émissions de CO2</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: white;">+50%</div>
+                            <div style="color: rgba(255,255,255,0.9);">Économies</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: white;">∞</div>
+                            <div style="color: rgba(255,255,255,0.9);">Nouvelles rencontres</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--text-dark); color: white; padding: 3rem 2rem; text-align: center;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="margin-bottom: 1rem;">🌱 BlaBlaCar</h4>
+                    <p style="opacity: 0.8;">Sensibiliser les jeunes à l'impact environnemental des transports</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">🔗 Liens utiles</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; opacity: 0.8;">
+                        <a href="https://www.ademe.fr/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+                            🌐 ADEME
+                        </a>
+                        <a href="https://www.blablacar.fr/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+                            🚗 BlaBlaCar
+                        </a>
+                        <a href="https://www.sncf-connect.com/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">
+                            🚆 SNCF Connect
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">📊 Impact</h4>
+                    <div style="opacity: 0.8;">
+                        <p>Calculateurs utilisés : <strong id="usage-counter">127</strong></p>
+                        <p>CO2 économisé : <strong>2.4 tonnes</strong></p>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin: 2rem 0; opacity: 0.3;">
+            <p style="opacity: 0.8;">
+                Créé avec ❤️ pour sensibiliser à l'écologie • 
+                Propulsé par <a href="https://htmx.org" style="color: var(--eco-green);">HTMX</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <script>
+        // Navigation smooth scroll et navbar sticky
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const usageCounter = document.getElementById('usage-counter');
+            
+            // Navbar scrolled effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Compteur d'utilisation
+            let count = parseInt(localStorage.getItem('usage_count') || '127');
+            
+            document.addEventListener('htmx:afterRequest', function(event) {
+                if (event.detail.requestConfig.path === '/calculate-impact') {
+                    count++;
+                    localStorage.setItem('usage_count', count.toString());
+                    usageCounter.textContent = count;
+                    
+                    // Animation du compteur
+                    usageCounter.style.transform = 'scale(1.2)';
+                    usageCounter.style.color = 'var(--eco-green)';
+                    setTimeout(() => {
+                        usageCounter.style.transform = 'scale(1)';
+                        usageCounter.style.color = 'white';
+                    }, 300);
+                }
+            });
+            
+            // Mise à jour initiale du compteur
+            usageCounter.textContent = count;
+        });
+    </script>
+</body>
+</html>
